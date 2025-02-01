@@ -24,6 +24,9 @@ jobs:
         
       - name: Build Docker image
         uses: ./.github/workflows/actions/php
+        with:
+          docker_username: ${{ env.docker_username }}
+          docker_password: ${{ env.docker_password }}
 
         
   # deploy:
