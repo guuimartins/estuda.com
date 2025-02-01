@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@v4
         
       - name: Run tests
-        uses: ./.github/actions/PHP
+        uses: ./.github/workflows/actions/php
 
   build:
     needs: test
@@ -19,7 +19,7 @@ jobs:
       - uses: actions/checkout@v4
         
       - name: Build Docker image
-        uses: ./.github/actions/PHP
+        uses: ./.github/workflows/actions/php
 
         
   # deploy:
