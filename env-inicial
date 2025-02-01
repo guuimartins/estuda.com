@@ -1,0 +1,5 @@
+DB_HOST=db
+DB_NAME=devops_db
+DB_USER=devops
+DB_PASSWORD=devops_password
+MYSQL_ROOT_PASSWORD=root123
