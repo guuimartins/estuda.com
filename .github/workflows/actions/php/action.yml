@@ -37,8 +37,8 @@ runs:
       if: ${{ github.job == 'build' }}
       shell: bash
       run: |
-        echo "LATEST_TAG=misticaai1/misticaai:latest" >> $GITHUB_ENV
-        echo "RUNNER_TAG=misticaai1/misticaai:${{ github.run_number }}" >> $GITHUB_ENV
+        echo "LATEST_TAG=gmartins882/seletivo-estudecom:latest" >> $GITHUB_ENV
+        echo "RUNNER_TAG=gmartins882/seletivo-estudecom:${{ github.run_number }}" >> $GITHUB_ENV
 
     - name: Build and push
       if: ${{ github.job == 'build' }}
