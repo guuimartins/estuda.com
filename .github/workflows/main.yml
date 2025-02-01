@@ -1,0 +1,9 @@
+name: Pipeline PHP
+
+on:
+  workflow_dispatch:
+
+jobs:
+  call-reusable:
+    uses: guuimartins/estuda.com/.github/workflows/reusable.yml@main
+    secrets: inherit
