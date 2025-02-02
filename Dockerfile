@@ -5,7 +5,7 @@ WORKDIR /var/www
 RUN useradd -r -u 1001 estudacom
 USER estudacom
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get update && apt-get install -y \
     git \
     unzip \
     libzip-dev \
