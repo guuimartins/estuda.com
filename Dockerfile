@@ -2,7 +2,10 @@ FROM php:8.2-apache
 
 WORKDIR /var/www
 
-RUN apt-get update && apt-get install -y \
+RUN useradd -r -u 1001 estudacom
+USER estudacom
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     unzip \
     libzip-dev \
