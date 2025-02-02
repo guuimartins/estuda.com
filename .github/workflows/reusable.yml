@@ -16,7 +16,7 @@ jobs:
       - name: Run tests
         uses: ./.github/workflows/actions/php
 
-  test-vulnerabilidade:
+  vulnerabilidade:
     runs-on: ubuntu-latest
     needs: test
     steps:
@@ -26,7 +26,7 @@ jobs:
         uses: ./.github/workflows/actions/trivy
 
   # build:
-  #   needs: test-vulnerabilidade
+  #   needs: vulnerabilidade
   #   runs-on: ubuntu-latest
   #   steps:
   #     - uses: actions/checkout@v4
