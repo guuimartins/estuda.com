@@ -11,3 +11,11 @@ runs:
         skip-dirs: 'database'
         format: 'table'
         severity: 'CRITICAL,HIGH'
+
+    - name: Run Trivy Dockerfile scan
+      uses: aquasecurity/trivy-action@master
+      with:
+        scan-type: 'config'
+        scan-ref: './Dockerfile'
+        format: 'table'
+        severity: 'CRITICAL,HIGH'
