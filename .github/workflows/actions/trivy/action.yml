@@ -1,0 +1,13 @@
+name: Analise de vulnerabilidade
+runs:
+  using: 'composite'
+  steps:
+    - name: Run Trivy filesystem scan
+       uses: aquasecurity/trivy-action@master
+       continue-on-error: true
+       with:
+         scan-type: 'fs'
+         scan-ref: '.'
+         skip-dirs: 'database'
+         format: 'table'
+         severity: 'CRITICAL,HIGH'

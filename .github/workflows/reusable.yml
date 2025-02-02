@@ -16,11 +16,19 @@ jobs:
       - name: Run tests
         uses: ./.github/workflows/actions/php
 
-  build:
-    needs: test
+  test-vulnerabilidade:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         
-      - name: Build Docker image
-        uses: ./.github/workflows/actions/php
+      - name: Run tests
+        uses: ./.github/workflows/actions/trivy
+
+  # build:
+  #   needs: test
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+        
+  #     - name: Build Docker image
+  #       uses: ./.github/workflows/actions/php
