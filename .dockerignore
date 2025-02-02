@@ -1,0 +1,6 @@
+docker-compose.yml
+.env
+.gitignore
+database
+.phpunit.result.cache
+vendor
