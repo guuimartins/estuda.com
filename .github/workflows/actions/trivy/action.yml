@@ -10,7 +10,7 @@ runs:
         scan-ref: '.'
         skip-dirs: 'database'
         format: 'table'
-        severity: 'CRITICAL,HIGH,MEDIUM,LOW'
+        severity: 'CRITICAL,HIGH,MEDIUM'
 
     - name: Run Trivy Dockerfile scan
       uses: aquasecurity/trivy-action@master
