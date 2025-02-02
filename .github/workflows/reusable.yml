@@ -25,11 +25,11 @@ jobs:
       - name: Analise de vulnerabilidade
         uses: ./.github/workflows/actions/trivy
 
-  # build:
-  #   needs: vulnerabilidade
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v4
+  build:
+    needs: vulnerabilidade
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
         
-  #     - name: Build Docker image
-  #       uses: ./.github/workflows/actions/php
+      - name: Build Docker image
+        uses: ./.github/workflows/actions/php
