@@ -20,7 +20,6 @@ on:
 
 jobs:
   call-reusable:
-    name: Execute Terraform Pipeline
     uses: guuimartins/estuda.com/.github/workflows/reusable.yml@main
     secrets: inherit
     with:
