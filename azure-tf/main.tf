@@ -7,9 +7,9 @@ terraform {
   }
   
   backend "azurerm" {
-    resource_group_name  = var.resource_group_name
-    storage_account_name = var.storage_account_name
-    container_name      = var.container_name
+    resource_group_name  = "estudacom"
+    storage_account_name = "storage-estudacom"
+    container_name      = "estudacom-app"
     key                 = "terraform.tfstate"
   }
 }
