@@ -3,6 +3,12 @@ name: Pipeline PHP
 on:
   workflow_dispatch:
     inputs:
+      namearquive:
+        description: 'Nome do arquivo terraform plan'
+        required: true
+        default: ''
+        type: string
+
       estatetf:
         description: 'Provisionar ou destruir o ambiente'
         required: true
@@ -11,12 +17,6 @@ on:
         options:
           - apply
           - destroy
-
-      namearquive:
-        description: 'Nome do arquivo terraform plan'
-        required: true
-        default: ''
-        type: string
 
 jobs:
   call-reusable:
