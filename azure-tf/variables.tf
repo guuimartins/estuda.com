@@ -25,7 +25,7 @@ variable "resource_group_name" {
 variable "storage_account_name" {
   description = "Nome da Storage Account"
   type        = string
-  default     = "storage-estudacom"
+  default     = "storageestudacom"
 }
 
 variable "container_name" {
