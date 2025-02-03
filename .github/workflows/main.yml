@@ -20,6 +20,7 @@ on:
 
 jobs:
   call-reusable:
+    name: Template
     uses: guuimartins/estuda.com/.github/workflows/reusable.yml@main
     secrets: inherit
     with:
