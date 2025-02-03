@@ -2,10 +2,23 @@ name: Reusable Workflow
 
 on:
   workflow_call:
+    inputs:
+      estatetf:
+        required: true
+        type: string
+      namearquive:
+        required: true
+        type: string
 
 env:
   docker_username: ${{ secrets.DOCKER_USERNAME }}
   docker_password: ${{ secrets.DOCKER_PASSWORD }}
+  ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+  ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+  ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+  ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+  namearquive: ${{ github.event.inputs.namearquive }}
+  estatetf: ${{ github.event.inputs.estatetf }}
 
 jobs:
   test:
@@ -33,3 +46,12 @@ jobs:
         
       - name: Build Docker image
         uses: ./.github/workflows/actions/php
+
+  provider-azure:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        
+      - name: Deploy to Azure
+        uses: ./.github/workflows/actions/terraform

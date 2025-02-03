@@ -1,0 +1,41 @@
+name: Analise de vulnerabilidade
+runs:
+  using: 'composite'
+  steps:
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v2
+
+    - name: Exportar variaveis de credencial da Azure
+      shell: bash
+      run: |
+        export ARM_CLIENT_ID=${{ env.ARM_CLIENT_ID }}
+        export ARM_CLIENT_SECRET=${{ env.ARM_CLIENT_SECRET }}
+        export ARM_SUBSCRIPTION_ID=${{ env.ARM_SUBSCRIPTION_ID }}
+        export ARM_TENANT_ID=${{ env.ARM_TENANT_ID }}
+
+    - name: Provisionamento ou destruicao
+      shell: bash
+      run: |
+        echo -e "\033[38;5;208m###################################### TERRAFORM ######################################\033[0m"
+
+        terraform init
+        terraform fmt
+        terraform validate
+        
+        if [ ${{ github.event.inputs.estatetf }} == 'apply' ]; then
+          terraform plan -input=false -out=${{ env.namearquive }}
+          # terraform apply -input=false -auto-approve ${{ env.namearquive }}
+          echo "Terraform apply realizado com sucesso"
+        else
+          # terraform destroy -auto-approve 
+          echo "Terraform destroy realizado com sucesso"
+        fi
+
+        echo -e "\033[38;5;208m###################################### TERRAFORM ######################################\033[0m"
+
+    - name: Upload do arquivo de plan
+      if: ${{ github.event.inputs.estatetf }} == 'apply'
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ env.namearquive }}_${{ github.run_number }}
+        path: ${{ github.worspace }}/terraform/${{ env.namearquive }}

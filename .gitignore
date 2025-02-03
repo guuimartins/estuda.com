@@ -2,3 +2,21 @@
 database/mysql
 .phpunit.result.cache
 vendor
+
+# Arquivos terraform nao versionados
+azure-tf/*.tfstate
+azure-tf/*.tfstate.*
+azure-tf/crash.log
+azure-tf/crash.*.log
+azure-tf/*.tfvars
+azure-tf/*.tfvars.json
+azure-tf/override.tf
+azure-tf/override.tf.json
+azure-tf/*_override.tf
+azure-tf/*_override.tf.json
+azure-tf/.terraform/
+azure-tf/.terraform.lock.hcl
+azure-tf/**/.terraform/*
+azure-tf/*.tfplan
+.terraformrc
+terraform.rc

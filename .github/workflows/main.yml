@@ -2,8 +2,27 @@ name: Pipeline PHP
 
 on:
   workflow_dispatch:
+    inputs:
+      estatetf:
+        description: 'Provisionar ou destruir o ambiente'
+        required: true
+        default: 'apply'
+        type: choice
+        options:
+          - apply
+          - destroy
+
+      namearquive:
+        description: 'Nome do arquivo terraform plan'
+        required: true
+        default: ''
+        type: string
 
 jobs:
   call-reusable:
+    name: Execute Terraform Pipeline
     uses: guuimartins/estuda.com/.github/workflows/reusable.yml@main
     secrets: inherit
+    with:
+      estatetf: ${{ github.event.inputs.estatetf }}
+      namearquive: ${{ github.event.inputs.namearquive }}
