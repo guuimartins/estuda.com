@@ -49,4 +49,4 @@ runs:
       uses: actions/upload-artifact@v4
       with:
         name: ${{ env.namearquive }}_${{ github.run_number }}
-        path: ${{ github.worspace }}/terraform/
+        path: ${{ github.worspace }}/azure-tf/
