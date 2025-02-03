@@ -21,6 +21,8 @@ runs:
       run: |
         echo -e "\033[38;5;208m###################################### TERRAFORM ######################################\033[0m"
 
+        cd terraform
+        
         terraform init
         terraform fmt
         terraform validate
