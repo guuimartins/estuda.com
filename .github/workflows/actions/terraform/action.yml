@@ -13,6 +13,12 @@ runs:
         export ARM_SUBSCRIPTION_ID=${{ env.ARM_SUBSCRIPTION_ID }}
         export ARM_TENANT_ID=${{ env.ARM_TENANT_ID }}
 
+        az login --service-principal \
+          --username "$ARM_CLIENT_ID" \
+          --password "$ARM_CLIENT_SECRET" \
+          --tenant "$ARM_TENANT_ID" \
+          --allow-no-subscriptions
+
         #debug
         az resource list
 
@@ -22,7 +28,7 @@ runs:
         echo -e "\033[38;5;208m###################################### TERRAFORM ######################################\033[0m"
 
         cd terraform
-        
+
         terraform init
         terraform fmt
         terraform validate
