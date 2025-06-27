@@ -2,12 +2,12 @@ name: Pipeline PHP
 
 on:
   workflow_dispatch:
-    inputs:
-      namearquive:
-        description: 'Nome do arquivo terraform plan'
-        required: true
-        default: ''
-        type: string
+    # inputs:
+    #   namearquive:
+    #     description: 'Nome do arquivo terraform plan'
+    #     required: true
+    #     default: ''
+    #     type: string
 
       # estatetf:
       #   description: 'Provisionar ou destruir o ambiente'
@@ -23,6 +23,6 @@ jobs:
     name: Job
     uses: guuimartins/estuda.com/.github/workflows/reusable.yml@main
     secrets: inherit
-    with:
-      estatetf: ${{ github.event.inputs.estatetf }}
-      namearquive: ${{ github.event.inputs.namearquive }}
+    # with:
+    #   estatetf: ${{ github.event.inputs.estatetf }}
+    #   namearquive: ${{ github.event.inputs.namearquive }}
