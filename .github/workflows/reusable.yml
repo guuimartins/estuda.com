@@ -45,8 +45,29 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Analise de vulnerabilidade
-        uses: ./.github/workflows/actions/trivy
+      - name: Run Trivy Dockerfile scan
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'config'
+          scan-ref: './Dockerfile'
+          format: 'table'
+          severity: 'CRITICAL,HIGH,MEDIUM,LOW'
+          ignore-unfixed: true
+
+      - name: 'Executar análise de vulnerabilidades com Trivy'
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'gmartins882/seletivo-estudecom:${{ github.run_number }}'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+          severity: 'HIGH,CRITICAL'
+          ignore-unfixed: true
+
+      - name: 'Upload do resultado SARIF para a aba Security'
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: 'trivy-results.sarif'
+          category: 'trivy'
   
   # provider-azure:
   #   needs: build
