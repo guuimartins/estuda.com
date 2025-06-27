@@ -14,7 +14,7 @@ runs:
     - name: 'Executar análise de vulnerabilidades com Trivy'
       uses: aquasecurity/trivy-action@master
       with:
-        image-ref: 'gmartins882/seletivo-estudecom:${{ github.run_number }}'
+        image-ref: 'gmartins882/seletivo-estudecom:latest'
         format: 'sarif'
         output: 'trivy-results.sarif'
         severity: 'HIGH,CRITICAL'
