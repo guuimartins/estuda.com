@@ -25,34 +25,34 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        
+
       - name: Run tests
         continue-on-error: true
         uses: ./.github/workflows/actions/php
 
-  sast:
-    runs-on: ubuntu-latest
-    needs: test
-    steps:
-      - uses: actions/checkout@v4
-        
-      - name: Analise de vulnerabilidade
-        uses: ./.github/workflows/actions/trivy
-
   build:
-    needs: sast
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        
+
       - name: Build Docker image
         uses: ./.github/workflows/actions/php
 
-  provider-azure:
+  sast:
     needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        
-      - name: Deploy to Azure
-        uses: ./.github/workflows/actions/terraform
+
+      - name: Analise de vulnerabilidade
+        uses: ./.github/workflows/actions/trivy
+  
+  # provider-azure:
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #
+  #     - name: Deploy to Azure
+  #       uses: ./.github/workflows/actions/terraform

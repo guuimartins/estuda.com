@@ -9,14 +9,14 @@ on:
         default: ''
         type: string
 
-      estatetf:
-        description: 'Provisionar ou destruir o ambiente'
-        required: true
-        default: 'apply'
-        type: choice
-        options:
-          - apply
-          - destroy
+      # estatetf:
+      #   description: 'Provisionar ou destruir o ambiente'
+      #   required: true
+      #   default: 'apply'
+      #   type: choice
+      #   options:
+      #     - apply
+      #     - destroy
 
 jobs:
   call-reusable:
