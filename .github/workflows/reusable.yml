@@ -2,13 +2,13 @@ name: Reusable Workflow
 
 on:
   workflow_call:
-    inputs:
-      estatetf:
-        required: true
-        type: string
-      namearquive:
-        required: true
-        type: string
+    # inputs:
+    #   estatetf:
+    #     required: true
+    #     type: string
+    #   namearquive:
+    #     required: true
+    #     type: string
 
 env:
   docker_username: ${{ secrets.DOCKER_USERNAME }}
