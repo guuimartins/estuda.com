@@ -1,4 +1,5 @@
 name: Analise de vulnerabilidade
+description: 'Executa análise de vulnerabilidades usando Trivy'
 runs:
   using: 'composite'
   steps:
@@ -10,18 +11,21 @@ runs:
         format: 'table'
         severity: 'CRITICAL,HIGH,MEDIUM,LOW'
         ignore-unfixed: true
+      shell: bash
 
     - name: 'Executar análise de vulnerabilidades com Trivy'
       uses: aquasecurity/trivy-action@master
       with:
-        image-ref: 'gmartins882/seletivo-estudecom:latest'
+        image-ref: 'gmartins882/seletivo-estudecom:${{ github.run_number }}'
         format: 'sarif'
         output: 'trivy-results.sarif'
         severity: 'HIGH,CRITICAL'
         ignore-unfixed: true
+      shell: bash
 
     - name: 'Upload do resultado SARIF para a aba Security'
       uses: github/codeql-action/upload-sarif@v3
       with:
         sarif_file: 'trivy-results.sarif'
         category: 'trivy'
+      shell: bash
