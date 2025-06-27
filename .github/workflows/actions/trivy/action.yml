@@ -2,16 +2,6 @@ name: Analise de vulnerabilidade
 runs:
   using: 'composite'
   steps:
-    # - name: Run Trivy filesystem scan
-    #   uses: aquasecurity/trivy-action@master
-    #   continue-on-error: true
-    #   with:
-    #     scan-type: 'fs'
-    #     scan-ref: '.'
-    #     skip-dirs: 'database'
-    #     format: 'table'
-    #     severity: 'CRITICAL,HIGH,MEDIUM'
-
     - name: Run Trivy Dockerfile scan
       uses: aquasecurity/trivy-action@master
       with:
@@ -30,8 +20,8 @@ runs:
           severity: 'HIGH,CRITICAL'
           ignore-unfixed: true
 
-      - name: 'Upload do resultado SARIF para a aba Security'
-        uses: github/codeql-action/upload-sarif@v3
-        with:
-          sarif_file: 'trivy-results.sarif'
-          category: 'trivy'
+    - name: 'Upload do resultado SARIF para a aba Security'
+      uses: github/codeql-action/upload-sarif@v3
+      with:
+        sarif_file: 'trivy-results.sarif'
+        category: 'trivy'
