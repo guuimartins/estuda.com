@@ -2,13 +2,6 @@ name: Reusable Workflow
 
 on:
   workflow_call:
-    # inputs:
-    #   estatetf:
-    #     required: true
-    #     type: string
-    #   namearquive:
-    #     required: true
-    #     type: string
 
 env:
   docker_username: ${{ secrets.DOCKER_USERNAME }}
@@ -19,6 +12,11 @@ env:
   ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
   namearquive: ${{ github.event.inputs.namearquive }}
   estatetf: ${{ github.event.inputs.estatetf }}
+
+permissions:
+  contents: read
+  security-events: write
+  actions: read
 
 jobs:
   test:
@@ -42,9 +40,6 @@ jobs:
   sast:
     needs: build
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      security-events: write
     steps:
       - uses: actions/checkout@v4
 
