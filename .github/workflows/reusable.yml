@@ -58,7 +58,7 @@ jobs:
           image-ref: 'gmartins882/seletivo-estudecom:${{ github.run_number }}'
           format: 'sarif'
           output: 'trivy-results.sarif'
-          severity: 'HIGH,CRITICAL'
+          severity: 'CRITICAL,HIGH,MEDIUM,LOW'
           ignore-unfixed: true
 
       - name: 'Upload do resultado SARIF para a aba Security'
